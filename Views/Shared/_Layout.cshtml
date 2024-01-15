@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Burger Geek - Hamburgueria Artesanal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    @*<link rel="stylesheet" href="~/css/sb-admin-2.css" asp-append-version="true" />*@
+    <link rel="stylesheet" href="~/GameStation.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/assets/favicon.ico" />
+    @*<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">*@
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1 class="site-heading text-center text-faded d-none d-lg-block">
+            <span class="site-heading-upper text-primary mb-3">O melhor do Hamburguer Artesanal</span>
+            <span class="site-heading-lower">Burger Geek</span>
+        </h1>
+    </header>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand text-uppercase fw-bold d-lg-none" asp-area="" asp-controller="Home" asp-action="Index">Burger Geek</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-area="" asp-controller="Home" asp-action="quemsomos">Sobre Nós</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-area="" asp-controller="Home" asp-action="contato">Contato</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-area="" asp-controller="Cardapio" asp-action="Index">Cardápios</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" asp-area="" asp-controller="Acesso" asp-action="login">Área do Cliente</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="margin-bottom: 5rem;">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <!-- Balãozinho de fala -->
+    <div id="balao-fala" class="escondido">
+        <span onclick="fecharBalao()" class="fechar">&times;</span>
+        <div class="triangulo"></div>
+        <p>Clique aqui para fazer seu pedido!</p>
+    </div>
+    <a href="https://wa.me/5514998216705?text=Olá%2C%20eu%20gostaria%20de%20fazer%20um%20pedido!" target="_blank"><img id="flutuante" src="~/assets/img/WhatsApp-Logo.png" alt="Imagem Flutuante"></a>
+
+    <footer class="footer text-faded text-center py-5">
+        <div class="container"><p class="m-0 small">Copyright &copy; <a href="https://github.com/FMRavelli" target="_blank">FurCode</a></p></div>
+    </footer>
+
+    <script>
+        function mostrarBalao() {
+            document.getElementById('balao-fala').style.display = 'block';
+        }
+
+        // Função para fechar o balão de fala
+        function fecharBalao() {
+            document.getElementById('balao-fala').style.display = 'none';
+        }
+
+        // Verificar se está na página inicial antes de chamar mostrarBalao()
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.location.pathname === '/') {
+                mostrarBalao();
+            }
+        });
+
+    </script>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/vendor/jquery/jquery.min.js"></script>
+    <script src="~/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="~/js/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
